@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Générateur de Vœux Aïd al-Adha</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f8f9fa;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #118C4F;
+      margin-bottom: 20px;
+    }
+
+    select, button {
+      padding: 10px 15px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #118C4F;
+      color: white;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      font-size: 18px;
+      white-space: pre-wrap;
+      direction: initial;
+    }
+  </style>
+</head>
+<body>
+  <h1>🌙 Eid Mubarak | Générateur de Vœux</h1>
+
+  <label for="langue">Choisir la langue :</label>
+  <select id="langue">
+    <option value="fr">Français</option>
+    <option value="ar">العربية</option>
+    <option value="bi">Bilingue</option>
+  </select>
+
+  <button onclick="genererMessage()">🎉 Générer un Message</button>
+
+  <div id="message"></div>
+
+  <script>
+    const messages = {
+      fr: [
+        "✨ Aïd Moubarak !\nQue cette fête vous apporte joie, santé et sérénité.\nEntouré de vos proches, profitez pleinement.\nPuisse Allah accepter vos prières.",
+        "🐑 Aïd al-Adha béni !\nMoments précieux en famille et en foi.\nQue la lumière divine illumine votre chemin.\nEt que vos sacrifices soient acceptés.",
+        "🌙 Joyeuse fête !\nRecevez amour, paix et bénédictions.\nDes sourires sincères et des cœurs légers.\nBonne fête de l’Aïd !"
+      ],
+      ar: [
+        "✨ عيد مبارك سعيد!\nأعاد الله عليكم هذه المناسبة بالخير واليمن والبركات.\nكل عام وأنتم بخير.\nتقبل الله منا ومنكم.",
+        "🐑 عيد الأضحى مبارك!\nأيام مليئة بالإيمان والسعادة.\nنسأل الله لكم القبول والمغفرة.\nعيدكم مبارك.",
+        "🌙 تهاني العيد!\nفرحة وسعادة وقلوب مطمئنة.\nأدام الله عليكم المسرات.\nوكل عام وأنتم بخير."
+      ],
+      bi: [
+        "✨ Aïd Moubarak سعيد مبارك!\nQu’Allah accepte vos sacrifices وتقبل الله منا ومنكم.\nBonne fête pleine d’amour والبركات.\nكل عام وأنتم بخير.",
+        "🐑 Eid Mubarak | عيد مبارك!\nPaix, amour et foi سلام و محبة و إيمان.\nQue vos vœux soient exaucés بإذن الله.\nBonne célébration مع العائلة.",
+        "🌙 Fête bénie | عيد مبارك\nJoyeuse ambiance مليئة بالسعادة.\nPuisse Allah vous combler من فضله.\nكل عام وأنتم بخير 🎉"
+      ]
+    };
+
+    function genererMessage() {
+      const langue = document.getElementById('langue').value;
+      const aleatoire = Math.floor(Math.random() * messages[langue].length);
+      const msg = messages[langue][aleatoire];
+      const messageDiv = document.getElementById('message');
+
+      messageDiv.innerText = msg;
+
+      if (langue === "ar") {
+        messageDiv.style.direction = "rtl";
+        messageDiv.style.textAlign = "right";
+      } else if (langue === "bi") {
+        messageDiv.style.direction = "rtl";
+        messageDiv.style.textAlign = "center";
+      } else {
+        messageDiv.style.direction = "ltr";
+        messageDiv.style.textAlign = "left";
+      }
+    }
+  </script>
+</body>
+</html>
